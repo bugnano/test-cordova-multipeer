@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+    Copyright 2016 Franco Bugnano
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+
+        <title>Test Multipeer Connectivity</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <h1>Local Peer</h1>
+            <ul class="list-group">
+                <li class="list-group-item">id: <span id="localPeerId"></span></li>
+                <li class="list-group-item">name: <span id="localPeerName"></span></li>
+                <li class="list-group-item">hash: <span id="localPeerHash"></span></li>
+            </ul>
+            <button type="button" id="btnStartAdvertising" class="btn btn-primary btn-lg btn-block">Start advertising</button>
+            <button type="button" id="btnStopAdvertising" class="btn btn-primary btn-lg btn-block">Stop advertising</button>
+            <h1>Known peers</h1>
+            <div id="lstKnownPeers" class="list-group">
+            </div>
+            <button type="button" id="btnGetPeers" class="btn btn-primary btn-lg btn-block">Get peers</button>
+            <h1>Discovered peers</h1>
+            <div id="lstDiscoveredPeers" class="list-group">
+            </div>
+            <button type="button" id="btnStartBrowsing" class="btn btn-primary btn-lg btn-block">Start browsing</button>
+            <button type="button" id="btnStopBrowsing" class="btn btn-primary btn-lg btn-block">Stop browsing</button>
+            <h1>Lost peers</h1>
+            <div id="lstLostPeers" class="list-group">
+            </div>
+            <h1>Selected peer</h1>
+            <div id="lstSelectedPeer" class="list-group">
+                <li class="list-group-item">peer.id: <span id="peerId"></span></li>
+                <li class="list-group-item">peer.name: <span id="peerName"></span></li>
+                <li class="list-group-item">peer.hash: <span id="peerHash"></span></li>
+            </div>
+            <button type="button" id="btnInvitePeer" class="btn btn-primary btn-lg btn-block">Invite peer</button>
+            <div id="invitationAccepted"></div>
+            <h1>Connected peers</h1>
+            <div id="lstConnectedPeers" class="list-group">
+            </div>
+            <button type="button" id="btnGetConnectedPeers" class="btn btn-primary btn-lg btn-block">Get connected peers</button>
+            <h1>Ping</h1>
+            <ul class="list-group">
+                <li class="list-group-item">Tx Count: <span id="txCount"></span></li>
+                <li class="list-group-item">Rx Count: <span id="rxCount"></span></li>
+                <li class="list-group-item">Rx Data Len: <span id="rxDataLen"></span></li>
+                <li class="list-group-item">Rx Data: <span id="rxData"></span></li>
+                <li class="list-group-item">Ping time: <span id="pingTime"></span></li>
+            </ul>
+            <button type="button" id="btnPingReliable" class="btn btn-primary btn-lg btn-block">Ping (Reliable)</button>
+            <button type="button" id="btnPingUnreliable" class="btn btn-primary btn-lg btn-block">Ping (Unreliable)</button>
+            <h1>Change State</h1>
+            <div id="lstChangeState" class="list-group">
+            </div>
+            <hr />
+            <button type="button" id="btnDisconnect" class="btn btn-primary btn-lg btn-block">Disconnect</button>
+            <hr />
+            <button type="button" id="btnClear" class="btn btn-primary btn-lg btn-block">Clear</button>
+        </div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
